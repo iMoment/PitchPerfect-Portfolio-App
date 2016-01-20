@@ -118,28 +118,43 @@
                                     <action selector="playSlowAudio:" destination="zQD-t5-ao7" eventType="touchUpInside" id="5Vh-S0-RCs"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lCe-9v-r4C">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" image="FastAudioButton"/>
+                                <connections>
+                                    <action selector="playFastAudio:" destination="zQD-t5-ao7" eventType="touchUpInside" id="W7A-WN-hKX"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="KQT-TV-Vx9" firstAttribute="leading" secondItem="lJH-fv-Cyp" secondAttribute="leadingMargin" constant="30" id="5Eh-Uk-5Vr"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="lCe-9v-r4C" secondAttribute="trailing" constant="30" id="YHG-Kv-U7T"/>
+                            <constraint firstItem="lCe-9v-r4C" firstAttribute="top" secondItem="kFv-rr-S8E" secondAttribute="bottom" constant="50" id="hvn-EH-BtL"/>
                             <constraint firstItem="KQT-TV-Vx9" firstAttribute="top" secondItem="kFv-rr-S8E" secondAttribute="bottom" constant="50" id="no5-Yp-sBm"/>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="KQT-TV-Vx9"/>
+                                <exclude reference="lCe-9v-r4C"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="5Eh-Uk-5Vr"/>
                                 <exclude reference="no5-Yp-sBm"/>
+                                <exclude reference="YHG-Kv-U7T"/>
+                                <exclude reference="hvn-EH-BtL"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
                             <mask key="subviews">
                                 <include reference="KQT-TV-Vx9"/>
+                                <include reference="lCe-9v-r4C"/>
                             </mask>
                             <mask key="constraints">
                                 <include reference="5Eh-Uk-5Vr"/>
                                 <include reference="no5-Yp-sBm"/>
+                                <include reference="YHG-Kv-U7T"/>
+                                <include reference="hvn-EH-BtL"/>
                             </mask>
                         </variation>
                     </view>
@@ -168,6 +183,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="FastAudioButton" width="100" height="100"/>
         <image name="Microphone" width="100" height="100"/>
         <image name="SlowAudioButton" width="100" height="100"/>
         <image name="StopRecordingButton" width="50" height="50"/>

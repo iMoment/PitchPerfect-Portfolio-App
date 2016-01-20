@@ -43,4 +43,13 @@ class PlaySoundsViewController: UIViewController {
         audioPlayer.play()
     }
     
+    //Method for playing the audio file fast
+    //IBAction linked to button with a rabbit icon
+    @IBAction func playFastAudio(sender: UIButton) {
+        audioPlayer.stop()
+        audioPlayer.rate = 2.0
+        audioPlayer.play()
+    }
+    
+    
 }
