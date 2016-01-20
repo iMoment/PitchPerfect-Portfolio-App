@@ -13,7 +13,9 @@ class PlaySoundsViewController: UIViewController {
     
     var audioPlayer: AVAudioPlayer!
     var receivedAudio: RecordedAudio!
+    
     var audioEngine: AVAudioEngine!
+    var audioFile: AVAudioFile!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +26,8 @@ class PlaySoundsViewController: UIViewController {
         audioPlayer.enableRate = true  // Need to set true to adjust playback rate
         
         audioEngine = AVAudioEngine()
+        // convert NSURL receivedAudio into AVAudioFile
+        audioFile = try! AVAudioFile(forReading: receivedAudio.filePathUrl)
     }
 
     override func didReceiveMemoryWarning() {
@@ -54,7 +58,31 @@ class PlaySoundsViewController: UIViewController {
     // Method for playing the audio with chipmunk effect
     // IBAction linked to button with a chipmunk icon
     @IBAction func playChipmunkAudio(sender: UIButton) {
+        playAudioWithVariablePitch(1000)
+    }
+    
+    // Method for playing the audio file with different pitch values
+    func playAudioWithVariablePitch(pitch: Float){
+        // Stop all audio before playback
+        audioPlayer.stop()
+        audioEngine.stop()
+        audioEngine.reset()
         
+        let audioPlayerNode = AVAudioPlayerNode()  // Create audioNode
+        audioEngine.attachNode(audioPlayerNode)  //Attach to audioEngine
+        
+        let changePitchEffect = AVAudioUnitTimePitch()
+        changePitchEffect.pitch = pitch
+        audioEngine.attachNode(changePitchEffect)
+        
+        // Connect audioNode to PitchEffect, and PitchEffect to output speaker
+        audioEngine.connect(audioPlayerNode, to: changePitchEffect, format: nil)
+        audioEngine.connect(changePitchEffect, to: audioEngine.outputNode, format: nil)
+        
+        audioPlayerNode.scheduleFile(audioFile, atTime: nil, completionHandler: nil)
+        try! audioEngine.start() // start audio engine
+        
+        audioPlayerNode.play()
     }
     
     // Method for stopping audio playback
