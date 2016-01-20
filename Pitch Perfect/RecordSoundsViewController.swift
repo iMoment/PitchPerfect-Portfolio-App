@@ -9,13 +9,14 @@
 import UIKit
 import AVFoundation
 
-class RecordSoundsViewController: UIViewController {
+class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
 
     @IBOutlet weak var recordingInProgress: UILabel!
     @IBOutlet weak var stopButton: UIButton!
     @IBOutlet weak var recordButton: UIButton!
     
     var audioRecorder: AVAudioRecorder!
+    var recordedAudio: RecordedAudio!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,11 +52,28 @@ class RecordSoundsViewController: UIViewController {
         try! session.setCategory(AVAudioSessionCategoryPlayAndRecord)
         // Initialize and prepare the recorder
         try! audioRecorder = AVAudioRecorder(URL: filePath!, settings: [:])
+        audioRecorder.delegate = self
         audioRecorder.meteringEnabled = true
         audioRecorder.prepareToRecord()
         audioRecorder.record()
     }
-
+    
+    // Method for saving recorded audio data, and passing it when performing segue
+    func audioRecorderDidFinishRecording(recorder: AVAudioRecorder, successfully flag: Bool) {
+        if(flag) {
+            recordedAudio = RecordedAudio()
+            recordedAudio.filePathUrl = recorder.url  //reference to audio file actually recorded on phone
+            recordedAudio.title = recorder.url.lastPathComponent  //gives us name of recorded file
+            //TODO: Move to next scene by performing segue
+            performSegueWithIdentifier("stopRecording", sender: recordedAudio)
+        }
+        else {
+            print("Recording was not successful.")
+            recordButton.enabled = true
+            stopButton.hidden = true
+        }
+    }
+    
     // Method for ending the user's voice recording
     // IBAction linked to button with a stop icon
     @IBAction func stopAudio(sender: UIButton) {
