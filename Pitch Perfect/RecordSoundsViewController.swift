@@ -58,7 +58,7 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
         audioRecorder.record()
     }
     
-    // Method for saving recorded audio data, and passing it when performing segue
+    // Method for saving recorded audio data, and performing segue
     func audioRecorderDidFinishRecording(recorder: AVAudioRecorder, successfully flag: Bool) {
         if(flag) {
             recordedAudio = RecordedAudio()
@@ -74,6 +74,14 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
         }
     }
     
+    //Method for passing data to PlaySoundsViewController
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if (segue.identifier == "stopRecording") {
+            let playSoundsVC:PlaySoundsViewController = segue.destinationViewController as! PlaySoundsViewController
+            let data = sender as! RecordedAudio
+            playSoundsVC.receivedAudio = data
+        }
+    }
     // Method for ending the user's voice recording
     // IBAction linked to button with a stop icon
     @IBAction func stopAudio(sender: UIButton) {
