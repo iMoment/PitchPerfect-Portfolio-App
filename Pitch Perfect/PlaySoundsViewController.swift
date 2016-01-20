@@ -21,6 +21,8 @@ class PlaySoundsViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    //Method for playing the audio file slowly
+    //IBAction linked to button with a snail icon
     @IBAction func playSlowAudio(sender: UIButton) {
         // Play audio slowly here
     }

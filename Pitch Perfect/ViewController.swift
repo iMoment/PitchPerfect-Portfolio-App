@@ -25,11 +25,12 @@ class ViewController: UIViewController {
     }
     
     override func viewWillAppear(animated: Bool) {
-        // Hide the stop button
         recordButton.enabled = true
         stopButton.hidden = true
     }
 
+    //Method for recording the user's voice
+    //IBAction linked to button with a microphone icon
     @IBAction func recordAudio(sender: UIButton) {
         recordButton.enabled = false
         stopButton.hidden = false
@@ -37,8 +38,11 @@ class ViewController: UIViewController {
         //TODO: Record the user's voice
     }
 
+    //Method for ending the user's voice recording
+    //IBAction linked to butotn with a stop icon
     @IBAction func stopAudio(sender: UIButton) {
         recordingInProgress.hidden = true
     }
+    
 }
 
