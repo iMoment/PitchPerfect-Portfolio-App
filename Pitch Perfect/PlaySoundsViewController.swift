@@ -1,0 +1,28 @@
+//
+//  PlaySoundsViewController.swift
+//  Pitch Perfect
+//
+//  Created by Stanley Pan on 1/20/16.
+//  Copyright © 2016 Stanley Pan. All rights reserved.
+//
+
+import UIKit
+
+class PlaySoundsViewController: UIViewController {
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        // Do any additional setup after loading the view.
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    @IBAction func playSlowAudio(sender: UIButton) {
+        // Play audio slowly here
+    }
+    
+}
