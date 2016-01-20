@@ -61,6 +61,12 @@ class PlaySoundsViewController: UIViewController {
         playAudioWithVariablePitch(1000)
     }
     
+    // Method for playing the audio with darth vader effect
+    // IBAction linked to button with a darth vader icon
+    @IBAction func playDarthVaderAudio(sender: UIButton) {
+        playAudioWithVariablePitch(-1000)
+    }
+    
     // Method for playing the audio file with different pitch values
     func playAudioWithVariablePitch(pitch: Float){
         // Stop all audio before playback
