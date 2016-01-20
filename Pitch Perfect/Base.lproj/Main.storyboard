@@ -36,11 +36,23 @@
                                     <rect key="frame" x="165" y="358" width="74" height="21"/>
                                 </variation>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Aro-vF-gav">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" image="StopRecordingButton"/>
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="177" y="508" width="50" height="50"/>
+                                </variation>
+                                <connections>
+                                    <action selector="stopAudio:" destination="BYZ-38-t0r" eventType="touchUpInside" id="If6-uQ-V3b"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="hTh-Fx-2nd" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Hyq-zw-b2t"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Aro-vF-gav" secondAttribute="bottom" constant="42" id="JEo-a9-QWr"/>
                             <constraint firstItem="7EW-dP-KHN" firstAttribute="top" secondItem="hTh-Fx-2nd" secondAttribute="bottom" constant="8" id="Ly2-Ol-9Me"/>
+                            <constraint firstItem="Aro-vF-gav" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ZeW-rL-Jdh"/>
                             <constraint firstItem="7EW-dP-KHN" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="kqn-VG-mJO"/>
                             <constraint firstItem="hTh-Fx-2nd" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="ptk-r4-r48"/>
                         </constraints>
@@ -48,24 +60,30 @@
                             <mask key="subviews">
                                 <exclude reference="hTh-Fx-2nd"/>
                                 <exclude reference="7EW-dP-KHN"/>
+                                <exclude reference="Aro-vF-gav"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="Hyq-zw-b2t"/>
                                 <exclude reference="ptk-r4-r48"/>
                                 <exclude reference="Ly2-Ol-9Me"/>
                                 <exclude reference="kqn-VG-mJO"/>
+                                <exclude reference="ZeW-rL-Jdh"/>
+                                <exclude reference="JEo-a9-QWr"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
                             <mask key="subviews">
                                 <include reference="hTh-Fx-2nd"/>
                                 <include reference="7EW-dP-KHN"/>
+                                <include reference="Aro-vF-gav"/>
                             </mask>
                             <mask key="constraints">
                                 <include reference="Hyq-zw-b2t"/>
                                 <include reference="ptk-r4-r48"/>
                                 <include reference="Ly2-Ol-9Me"/>
                                 <include reference="kqn-VG-mJO"/>
+                                <include reference="ZeW-rL-Jdh"/>
+                                <include reference="JEo-a9-QWr"/>
                             </mask>
                         </variation>
                     </view>
@@ -79,5 +97,6 @@
     </scenes>
     <resources>
         <image name="Microphone" width="100" height="100"/>
+        <image name="StopRecordingButton" width="50" height="50"/>
     </resources>
 </document>
