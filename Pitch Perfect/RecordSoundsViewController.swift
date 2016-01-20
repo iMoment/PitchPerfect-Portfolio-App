@@ -7,12 +7,15 @@
 //
 
 import UIKit
+import AVFoundation
 
 class RecordSoundsViewController: UIViewController {
 
     @IBOutlet weak var recordingInProgress: UILabel!
     @IBOutlet weak var stopButton: UIButton!
     @IBOutlet weak var recordButton: UIButton!
+    
+    var audioRecorder: AVAudioRecorder!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,13 +38,32 @@ class RecordSoundsViewController: UIViewController {
         recordButton.enabled = false
         stopButton.hidden = false
         recordingInProgress.hidden = false
-        // TODO: Record the user's voice
+        // Get path to DocumentDirectory within our app
+        let dirPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as String
+        
+        let recordingName = "my_audio.wav"
+        let pathArray = [dirPath, recordingName]
+        let filePath = NSURL.fileURLWithPathComponents(pathArray)
+        print(filePath)
+        
+        // Setup audio session
+        let session = AVAudioSession.sharedInstance()
+        try! session.setCategory(AVAudioSessionCategoryPlayAndRecord)
+        // Initialize and prepare the recorder
+        try! audioRecorder = AVAudioRecorder(URL: filePath!, settings: [:])
+        audioRecorder.meteringEnabled = true
+        audioRecorder.prepareToRecord()
+        audioRecorder.record()
     }
 
     // Method for ending the user's voice recording
     // IBAction linked to button with a stop icon
     @IBAction func stopAudio(sender: UIButton) {
         recordingInProgress.hidden = true
+        // Stop the audio recorder and deactivate the audio session
+        audioRecorder.stop()
+        let audioSession = AVAudioSession.sharedInstance()
+        try! audioSession.setActive(false)
     }
     
 }
