@@ -39,7 +39,7 @@ class ViewController: UIViewController {
     }
 
     //Method for ending the user's voice recording
-    //IBAction linked to butotn with a stop icon
+    //IBAction linked to button with a stop icon
     @IBAction func stopAudio(sender: UIButton) {
         recordingInProgress.hidden = true
     }

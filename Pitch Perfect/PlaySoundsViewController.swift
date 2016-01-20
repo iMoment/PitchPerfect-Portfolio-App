@@ -51,5 +51,10 @@ class PlaySoundsViewController: UIViewController {
         audioPlayer.play()
     }
     
+    //Method for stopping audio playback
+    //IBAction linked to button with a stop icon
+    @IBAction func stopPlayback(sender: UIButton) {
+        audioPlayer.stop()
+    }
     
 }
