@@ -26,7 +26,8 @@ class PlaySoundsViewController: UIViewController {
         audioPlayer.enableRate = true  // Need to set true to adjust playback rate
         
         audioEngine = AVAudioEngine()
-        // convert NSURL receivedAudio into AVAudioFile
+        
+        // Convert NSURL receivedAudio into AVAudioFile
         audioFile = try! AVAudioFile(forReading: receivedAudio.filePathUrl)
     }
 
@@ -50,6 +51,8 @@ class PlaySoundsViewController: UIViewController {
     // Method for playing the audio file with different rate values
     func playAudioWithVariableSpeed(speed: Float) {
         audioPlayer.stop()
+        audioEngine.stop()
+        audioEngine.reset()
         audioPlayer.rate = speed
         audioPlayer.currentTime = 0.0
         audioPlayer.play()
@@ -75,7 +78,7 @@ class PlaySoundsViewController: UIViewController {
         audioEngine.reset()
         
         let audioPlayerNode = AVAudioPlayerNode()  // Create audioNode
-        audioEngine.attachNode(audioPlayerNode)  //Attach to audioEngine
+        audioEngine.attachNode(audioPlayerNode)  // Attach to audioEngine
         
         let changePitchEffect = AVAudioUnitTimePitch()
         changePitchEffect.pitch = pitch
@@ -86,7 +89,7 @@ class PlaySoundsViewController: UIViewController {
         audioEngine.connect(changePitchEffect, to: audioEngine.outputNode, format: nil)
         
         audioPlayerNode.scheduleFile(audioFile, atTime: nil, completionHandler: nil)
-        try! audioEngine.start() // start audio engine
+        try! audioEngine.start()  // Start audio engine
         
         audioPlayerNode.play()
     }
