@@ -29,17 +29,17 @@ class ViewController: UIViewController {
         stopButton.hidden = true
     }
 
-    //Method for recording the user's voice
-    //IBAction linked to button with a microphone icon
+    // Method for recording the user's voice
+    // IBAction linked to button with a microphone icon
     @IBAction func recordAudio(sender: UIButton) {
         recordButton.enabled = false
         stopButton.hidden = false
         recordingInProgress.hidden = false
-        //TODO: Record the user's voice
+        // TODO: Record the user's voice
     }
 
-    //Method for ending the user's voice recording
-    //IBAction linked to button with a stop icon
+    // Method for ending the user's voice recording
+    // IBAction linked to button with a stop icon
     @IBAction func stopAudio(sender: UIButton) {
         recordingInProgress.hidden = true
     }

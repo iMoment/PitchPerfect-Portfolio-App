@@ -35,24 +35,24 @@ class PlaySoundsViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    //Method for playing the audio file slowly
-    //IBAction linked to button with a snail icon
+    // Method for playing the audio file slowly
+    // IBAction linked to button with a snail icon
     @IBAction func playSlowAudio(sender: UIButton) {
         audioPlayer.stop()
         audioPlayer.rate = 0.5
         audioPlayer.play()
     }
     
-    //Method for playing the audio file fast
-    //IBAction linked to button with a rabbit icon
+    // Method for playing the audio file fast
+    // IBAction linked to button with a rabbit icon
     @IBAction func playFastAudio(sender: UIButton) {
         audioPlayer.stop()
         audioPlayer.rate = 2.0
         audioPlayer.play()
     }
     
-    //Method for stopping audio playback
-    //IBAction linked to button with a stop icon
+    // Method for stopping audio playback
+    // IBAction linked to button with a stop icon
     @IBAction func stopPlayback(sender: UIButton) {
         audioPlayer.stop()
     }
